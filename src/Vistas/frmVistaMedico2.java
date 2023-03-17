@@ -120,9 +120,9 @@ public class frmVistaMedico2 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtenderPaciente2;
+    public javax.swing.JButton btnAtenderPaciente2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtListaMedico2;
     // End of variables declaration//GEN-END:variables
 }
