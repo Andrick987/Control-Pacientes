@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import javax.swing.JOptionPane;
 
-public class ListaPacientes {
+public class ModeloPacientes1 {
     
     Queue<Pacientes> ListaPacientes = new LinkedList();
     
@@ -14,12 +14,6 @@ public class ListaPacientes {
         Pacientes nuevoPaciente = new Pacientes(ape, nom);
         this.ListaPacientes.add(nuevoPaciente);
         JOptionPane.showMessageDialog(null, "Paciente Agregado a Medico A");
-    }
-    public void PacientesMedico2(String ape, String nom){
-        
-        Pacientes nuevoPaciente = new Pacientes(ape, nom);
-        this.ListaPacientes.add(nuevoPaciente);
-        JOptionPane.showMessageDialog(null, "Paciente Agregado a Medico B");
     }
     public Queue ListarPaciente(){
         

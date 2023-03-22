@@ -1,7 +1,8 @@
 
 package Controladores;
 
-import Modelos.ListaPacientes;
+import Modelos.ModeloPacientes1;
+import Modelos.ModeloPacientes2;
 import Modelos.Pacientes;
 import Vistas.frmVistaMedico1;
 import Vistas.frmVistaMedico2;
@@ -15,12 +16,16 @@ public class ListaControler implements ActionListener{
     frmVistaPrincipal VistaPrincipal;
     frmVistaMedico1 VistaMedico1;
     frmVistaMedico2 VistaMedico2;
-    
-    ListaPacientes ModeloLista;
+    ModeloPacientes1 ModeloLista1;
+    ModeloPacientes2 ModeloLista2;
 
-    public ListaControler(frmVistaPrincipal VistaPrincipal, ListaPacientes ModeloLista) {
+    public ListaControler(frmVistaPrincipal VistaPrincipal, frmVistaMedico1 VistaMedico1, frmVistaMedico2 VistaMedico2, 
+            ModeloPacientes1 ModeloLista1, ModeloPacientes2 ModeloLista2) {
         this.VistaPrincipal = VistaPrincipal;
-        this.ModeloLista = ModeloLista;
+        this.VistaMedico1 = VistaMedico1;
+        this.VistaMedico2 = VistaMedico2;
+        this.ModeloLista1 = ModeloLista1;
+        this.ModeloLista2 = ModeloLista2;
         
         this.VistaPrincipal.btnAgregarMedico1.addActionListener(this);
         this.VistaPrincipal.btnAgregarMedico2.addActionListener(this);
@@ -34,19 +39,48 @@ public class ListaControler implements ActionListener{
      
     @Override
     public void actionPerformed(ActionEvent e){
+        
         if(e.getSource() == this.VistaPrincipal.btnAgregarMedico1){
             
-            this.ModeloLista.PacientesMedico1(this.VistaPrincipal.txtApellidos.getText(),
-            this.VistaPrincipal.txtNombre.getText());
+            this.ModeloLista1.PacientesMedico1(this.VistaPrincipal.txtApellidos.getText(),
+                this.VistaPrincipal.txtNombre.getText());
            
-            Queue<Pacientes> listalocal = this.ModeloLista.ListarPaciente();
+            Queue<Pacientes> listalocal = this.ModeloLista1.ListarPaciente();
             
             String Cadena = "";
-            for(Pacientes MiListaPacientes : listalocal){
+            for(Pacientes MiListaPacientes: listalocal){
+                
                 Cadena = Cadena + MiListaPacientes.getApellidos()+" "+MiListaPacientes.getNombres()+"\n";
             this.VistaMedico1.txtListaMedico1.setText(Cadena);
             }
-    }
+            this.VistaPrincipal.txtApellidos.setText(" ");
+            this.VistaPrincipal.txtNombre.setText(" ");
+            }
+        
+        if(e.getSource() == this.VistaPrincipal.btnAgregarMedico2){
+           this.ModeloLista2.PacientesMedico2(this.VistaPrincipal.txtApellidos.getText(),
+                   this.VistaPrincipal.txtNombre.getText());
+           
+           Queue<Pacientes> listalocal = this.ModeloLista2.ListarPaciente();
+           
+           String Cadena = "";
+            for(Pacientes MiListaPacientes: listalocal){
+                Cadena = Cadena + MiListaPacientes.getApellidos()+" "+MiListaPacientes.getNombres()+"\n";
+            this.VistaMedico2.txtListaMedico2.setText(Cadena);
+            }
+            this.VistaPrincipal.txtApellidos.setText(" ");
+            this.VistaPrincipal.txtNombre.setText(" ");
+            }
+        
+        if(e.getSource() == this.VistaPrincipal.btnListaMedico1){
+            this.VistaMedico1.setLocationRelativeTo(null);
+            this.VistaMedico1.setVisible(true);
+            }
+        
+        if(e.getSource() == this.VistaPrincipal.btnListaMedico2){
+            this.VistaMedico2.setLocationRelativeTo(null);
+            this.VistaMedico2.setVisible(true);
+            }
     }
         
 }
