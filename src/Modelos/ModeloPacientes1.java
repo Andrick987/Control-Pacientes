@@ -13,12 +13,18 @@ public class ModeloPacientes1 {
         
         Pacientes nuevoPaciente = new Pacientes(ape, nom);
         this.ListaPacientes.add(nuevoPaciente);
-        JOptionPane.showMessageDialog(null, "Paciente Agregado a Medico A");
+        
     }
     public Queue ListarPaciente(){
         
         return this.ListaPacientes;
         
     }
+    public void EliminarPaciente1(){
+        
+        this.ListaPacientes.poll();
+        
+    }
+        
 }
     
